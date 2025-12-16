@@ -1,0 +1,117 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid var(--line);
+}
+
+.bar {
+  height: 72px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.brandName {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.logo {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 6px;
+  border: 1px solid var(--line);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  justify-content: center;
+}
+
+.link {
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+}
+
+.link:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.apply {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #000;
+  font-weight: 800;
+  font-size: 14px;
+  box-shadow: 0 10px 22px rgba(242, 148, 65, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.apply:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(242, 148, 65, 0.45);
+}
+
+.contact {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 0 6px rgba(242, 61, 61, 0.1);
+}
+
+@media (max-width: 900px) {
+  .bar {
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+    height: auto;
+    padding: 12px 0;
+  }
+
+  .links {
+    display: none;
+  }
+}

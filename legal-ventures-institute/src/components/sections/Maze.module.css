@@ -1,0 +1,91 @@
+.section {
+  padding: 72px 0;
+}
+
+.inner {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+}
+
+.imageWrap {
+  position: relative;
+  min-height: 420px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: radial-gradient(100% 100% at 20% 20%, rgba(242, 61, 61, 0.08), transparent),
+    #000000;
+}
+
+.imageWrap :global(img) {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.65));
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-self: stretch;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line {
+  margin: 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.boldLine {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.kicker {
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+.headline {
+  margin: 0 0 8px;
+  font-size: clamp(24px, 3.2vw, 30px);
+  line-height: 1.25;
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .imageWrap {
+    min-height: 340px;
+  }
+
+  .panel {
+    padding: 26px;
+  }
+}

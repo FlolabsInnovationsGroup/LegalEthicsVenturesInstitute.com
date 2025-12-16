@@ -1,0 +1,101 @@
+.section {
+  padding: 80px 0;
+}
+
+.inner {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: center;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.line {
+  margin: 0;
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.kicker {
+  margin: 0 0 6px;
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.statement :global(.p) {
+  margin: 0;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 8px 0;
+}
+
+.audience {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted2);
+}
+
+.imageWrap {
+  position: relative;
+  min-height: 420px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: radial-gradient(90% 90% at 20% 20%, rgba(242, 148, 65, 0.08), transparent),
+    #000000;
+}
+
+.imageWrap :global(img) {
+  object-fit: cover;
+  object-position: center;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.65));
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .panel {
+    padding: 26px;
+  }
+
+  .imageWrap {
+    min-height: 340px;
+  }
+}
