@@ -29,11 +29,15 @@ export default function DoYou() {
               If <span className="em-accent">YES</span>, this is where your{" "}
               <span className="em-accent">journey starts.</span>
             </p>
-            <div className={styles.logoMark} />
+            <div className={styles.actions}>
+              <a className={styles.cta} href="/contact">
+                Talk to us
+              </a>
+            </div>
           </div>
           <div className={styles.imageWrap}>
             <Image
-              src="/Assets/5th image.png"
+              src="/Assets/5th image.jpg"
               alt="Community and mentorship"
               fill
               sizes="(max-width: 900px) 100vw, 48vw"

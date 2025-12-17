@@ -18,11 +18,6 @@ export default function Page() {
       <Offerings />
       <Playground />
       <DoYou />
-      <footer style={{ padding: "48px 0", borderTop: "1px solid var(--line)" }}>
-        <div className="container" style={{ color: "var(--muted2)", fontSize: 14 }}>
-          © {new Date().getFullYear()} Legal &amp; Ethics Ventures Institute
-        </div>
-      </footer>
     </>
   );
 }

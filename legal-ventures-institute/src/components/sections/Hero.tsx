@@ -18,7 +18,7 @@ export default function Hero() {
           <div className={styles.media}>
             <div className={styles.imageWrap}>
               <Image
-                src="/Assets/1st image.png"
+                src="/Assets/hero-1st.jpg"
                 alt="Legal & Ethics Ventures Institute hero"
                 fill
                 priority
@@ -28,9 +28,6 @@ export default function Hero() {
             </div>
           </div>
           <div className={styles.panel}>
-            <div className={styles.logo}>
-              <Image src="/logo.png" alt="Legal & Ethics Ventures Institute logo" width={72} height={72} />
-            </div>
             <div className={styles.header}>
               <h1 className={styles.title}>
                 Legal &amp; Ethics

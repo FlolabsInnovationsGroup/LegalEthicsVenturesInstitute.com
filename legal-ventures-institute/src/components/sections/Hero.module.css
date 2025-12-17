@@ -4,7 +4,7 @@
 
 .inner {
   display: grid;
-  gap: 28px;
+  gap: 18px;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   align-items: stretch;
 }
@@ -15,14 +15,14 @@
 
 .imageWrap {
   position: relative;
-  min-height: 440px;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  min-height: 360px;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   isolation: isolate;
   background: radial-gradient(120% 120% at 20% 20%, rgba(242, 148, 65, 0.08), transparent),
-    #000000;
+    #1A1A26;
 }
 
 .imageWrap :global(img) {
@@ -45,15 +45,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.logo {
-  display: inline-flex;
-  padding: 10px;
-  border-radius: 16px;
-  background: rgba(242, 61, 61, 0.12);
-  border: 1px solid rgba(242, 61, 61, 0.25);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  min-height: 360px;
 }
 
 .header {
@@ -99,7 +91,7 @@
 }
 
 .primary {
-  background: var(--accent);
+  background: linear-gradient(120deg, var(--accent), var(--accent3));
   color: #000000;
   border: 1px solid transparent;
   box-shadow: 0 10px 24px rgba(242, 148, 65, 0.35);
@@ -133,10 +125,11 @@
 
 @media (max-width: 900px) {
   .imageWrap {
-    min-height: 360px;
+    min-height: 320px;
   }
 
   .panel {
     padding: 28px;
+    min-height: 320px;
   }
 }

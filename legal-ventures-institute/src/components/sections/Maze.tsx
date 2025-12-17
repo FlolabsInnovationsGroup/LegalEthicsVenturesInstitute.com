@@ -8,7 +8,7 @@ export default function Maze() {
         <div className={styles.inner}>
           <div className={styles.imageWrap}>
             <Image
-              src="/Assets/3rd image.png"
+              src="/Assets/3rd image.jpg"
               alt="Maze representing legal world"
               fill
               sizes="(max-width: 900px) 100vw, 48vw"

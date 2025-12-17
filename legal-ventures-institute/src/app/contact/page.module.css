@@ -1,0 +1,67 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoList {
+  display: grid;
+  gap: 10px;
+}
+
+.label {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted2);
+}
+
+.value {
+  margin: 0;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.ctaBox {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.subhead {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .panel {
+    padding: 18px;
+  }
+}

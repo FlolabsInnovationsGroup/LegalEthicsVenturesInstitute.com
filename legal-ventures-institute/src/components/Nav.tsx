@@ -3,8 +3,8 @@ import Link from "next/link";
 import styles from "./Nav.module.css";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
   { label: "Internships", href: "https://hephaestus.international/", external: true },
 ];
 

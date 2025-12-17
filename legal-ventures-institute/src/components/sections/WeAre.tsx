@@ -43,7 +43,7 @@ export default function WeAre() {
           </div>
           <div className={styles.imageWrap}>
             <Image
-              src="/Assets/2nd image.png"
+              src="/Assets/2nd image.jpg"
               alt="Collaborative learning"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"

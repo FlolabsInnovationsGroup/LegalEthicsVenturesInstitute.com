@@ -9,22 +9,20 @@ const offerings = [
   "Immediate impact on real projects - from day one",
 ];
 
-const palette = ["var(--accent)", "var(--danger)"];
+const accent = "var(--accent)";
 
 export default function Offerings() {
   return (
     <section className={styles.section}>
       <div className="container">
         <div className={styles.header}>
-          <div className="kicker">Curriculum</div>
           <h2 className="h2">We offer you</h2>
         </div>
         <div className={styles.grid}>
-          {offerings.map((title, idx) => {
-            const color = palette[idx % palette.length];
+          {offerings.map((title) => {
             return (
-              <div key={title} className={styles.card} style={{ borderColor: color }}>
-                <div className={styles.icon} style={{ background: color }} />
+              <div key={title} className={styles.card} style={{ borderColor: accent }}>
+                <div className={styles.icon} style={{ background: accent }} />
                 <p className={styles.label}>{title}</p>
               </div>
             );

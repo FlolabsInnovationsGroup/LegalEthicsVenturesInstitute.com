@@ -6,7 +6,7 @@ export default function BuildAfter() {
     <section className={styles.section}>
       <div className={styles.background}>
         <Image
-          src="/images/build-after-bg.png"
+          src="/Assets/4th image.jpg"
           alt="Students collaborating"
           fill
           priority
