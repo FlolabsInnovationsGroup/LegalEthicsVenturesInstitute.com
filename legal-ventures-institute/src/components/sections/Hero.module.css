@@ -1,5 +1,5 @@
 .section {
-  padding: 64px 0;
+  padding: 150px 0 0;
 }
 
 .inner {
@@ -124,6 +124,10 @@
 }
 
 @media (max-width: 900px) {
+  .section {
+    padding: 88px 0 0;
+  }
+
   .imageWrap {
     min-height: 320px;
   }

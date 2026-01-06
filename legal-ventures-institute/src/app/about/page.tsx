@@ -4,20 +4,21 @@ import styles from "./page.module.css";
 type ListItem = { text: string };
 
 type AboutPageData = {
-  title: string;
-  heroHeadline: string;
+  title?: string;
+  kicker?: string;
+  heroHeadline?: string;
   heroSubheadline?: string;
-  missionTitle: string;
-  missionBody: string;
-  whatWeDoTitle: string;
+  missionTitle?: string;
+  missionBody?: string;
+  whatWeDoTitle?: string;
   whatWeDoItems?: ListItem[];
-  whoItsForTitle: string;
+  whoItsForTitle?: string;
   whoItsForItems?: ListItem[];
-  howWeWorkTitle: string;
-  howWeWorkBody: string;
-  valuesTitle: string;
+  howWeWorkTitle?: string;
+  howWeWorkBody?: string;
+  valuesTitle?: string;
   valuesItems?: ListItem[];
-  closingBody: string;
+  closingBody?: string;
 };
 
 async function fetchAbout(): Promise<AboutPageData | null> {
@@ -69,24 +70,53 @@ const toParagraphs = (copy?: string) =>
     .map((p) => p.trim())
     .filter(Boolean) ?? [];
 
-export default async function AboutPage() {
-  const content = await fetchAbout();
+const fallbackContent: AboutPageData = {
+  kicker: "ABOUT US",
+  title: "About Legal Ventures Institute",
+  heroHeadline: "About Legal Ventures Institute",
+  heroSubheadline:
+    "Legal Ventures Institute is where legal training meets real product building. We help aspiring legal professionals, technologists, and founders learn the practical skills needed to design, ship, and scale legal solutions. Not just pass exams.\n\n" +
+    "Our approach is hands on and venture oriented. You will learn by working on real world problems, creating deliverables that mirror what modern legal teams, legal ops, and legal tech companies actually need. That includes research workflows, policy and compliance documentation, contract systems, automation, and AI enabled tools that improve how legal work gets done.",
+  missionTitle: "Our Mission",
+  missionBody:
+    "To develop the next generation of legal builders. People who can think like attorneys, operate like product teams, and execute like entrepreneurs.",
+  whatWeDoTitle: "What We Do",
+  whatWeDoItems: [
+    { text: "Train members to turn legal knowledge into usable systems, frameworks, and products" },
+    { text: "Support venture style projects in legal tech, compliance, and process automation" },
+    { text: "Provide mentorship, feedback, and structured deliverables that build real portfolios" },
+    { text: "Connect learning to practical outcomes. Skills, confidence, and credibility" },
+  ],
+  whoItsForTitle: "Who It’s For",
+  whoItsForItems: [
+    { text: "Law students and recent graduates" },
+    { text: "Working professionals moving into compliance, legal ops, or policy" },
+    { text: "Builders exploring legal tech and regulation aware product design" },
+    { text: "Lifelong learners who want practical legal skills with modern tools" },
+  ],
+  howWeWorkTitle: "How We Work",
+  howWeWorkBody:
+    "You learn through structured sprints, reviews, and teamwork. Every track includes clear milestones, templates, and real outputs you can show. We focus on clarity, ethics, and usability. Because legal work should be understandable, accessible, and built to last.",
+  valuesTitle: "Our Values",
+  valuesItems: [
+    { text: "Integrity and professionalism" },
+    { text: "Accessibility. Clear language, inclusive design, practical tools" },
+    { text: "Accountability. We measure progress by deliverables, not hype" },
+    { text: "Innovation with responsibility. Especially when using AI" },
+  ],
+  closingBody:
+    "If you want to go beyond theory and start building what comes after the bar, Legal Ventures Institute is your place.",
+};
 
-  if (!content) {
-    return (
-      <main className="container" style={{ padding: "80px 0" }}>
-        <Nav />
-        <h1 className="h1" style={{ marginBottom: 16 }}>About Us</h1>
-        <p className="p">About content is not available right now. Please check back soon.</p>
-      </main>
-    );
-  }
+export default async function AboutPage() {
+  const fetched = await fetchAbout();
+  const content = { ...(fetched ?? {}), ...fallbackContent };
 
   return (
     <main className="container" style={{ padding: "80px 0" }}>
       <Nav />
       <header className={styles.hero}>
-        <p className="kicker">About</p>
+        <p className="kicker">{content.kicker || "ABOUT US"}</p>
         <h1 className="h1">{content.heroHeadline || content.title}</h1>
         <div className={styles.stack}>
           {toParagraphs(content.heroSubheadline).map((p, idx) => (
@@ -166,11 +196,8 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section className={styles.section} aria-labelledby="closing">
+      <section className={styles.section}>
         <div className={styles.panel}>
-          <h2 id="closing" className="h2">
-            Ready to build what comes after the bar
-          </h2>
           <div className={styles.stack}>
             {toParagraphs(content.closingBody).map((p, idx) => (
               <p key={idx} className="p">

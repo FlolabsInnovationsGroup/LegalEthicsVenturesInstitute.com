@@ -1,237 +1,81 @@
-/* Client-side contact form that posts to /api/contact. Copy/content managed in Strapi. */
+/* Client-side HubSpot form embed. */
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useRef } from "react";
 import styles from "./ContactForm.module.css";
 
 type Props = {
   disclaimer?: string;
 };
 
-type FormValues = {
-  fullName: string;
-  email: string;
-  topic: string;
-  message: string;
-  consent: boolean;
+type HubspotFormOptions = {
+  portalId: string;
+  formId: string;
+  region?: string;
+  target: string;
 };
 
-type Errors = Partial<Record<keyof FormValues, string>>;
+declare global {
+  interface Window {
+    hbspt?: {
+      forms: {
+        create: (options: HubspotFormOptions) => void;
+      };
+    };
+  }
+}
 
-const topics = ["General", "Programs", "Partnerships", "Media", "Support"] as const;
+const HUBSPOT_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
+const HUBSPOT_PORTAL_ID = "45023159";
+const HUBSPOT_FORM_ID = "a41399f8-7406-4f05-91ca-1c79839a2987";
+const HUBSPOT_REGION = "na1";
 
 export default function ContactForm({ disclaimer }: Props) {
-  const [values, setValues] = useState<FormValues>({
-    fullName: "",
-    email: "",
-    topic: "",
-    message: "",
-    consent: false,
-  });
-  const [errors, setErrors] = useState<Errors>({});
-  const [submitting, setSubmitting] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [serverError, setServerError] = useState<string | null>(null);
-
-  const refs = {
-    fullName: useRef<HTMLInputElement>(null),
-    email: useRef<HTMLInputElement>(null),
-    topic: useRef<HTMLSelectElement>(null),
-    message: useRef<HTMLTextAreaElement>(null),
-    consent: useRef<HTMLInputElement>(null),
-  };
-
-  const firstErrorKey = useMemo(() => {
-    const order: (keyof FormValues)[] = ["fullName", "email", "topic", "message", "consent"];
-    return order.find((key) => errors[key]);
-  }, [errors]);
+  const targetId = `hubspot-form-${useId().replace(/:/g, "")}`;
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (firstErrorKey) {
-      refs[firstErrorKey].current?.focus();
-    }
-  }, [firstErrorKey, refs]);
+    const createForm = () => {
+      if (!window.hbspt?.forms || !formRef.current) return;
+      if (formRef.current.childElementCount > 0) return;
 
-  const validate = (v: FormValues): Errors => {
-    const next: Errors = {};
-    if (!v.fullName || v.fullName.trim().length < 2) {
-      next.fullName = "Full name must be at least 2 characters.";
-    }
-    if (!v.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email)) {
-      next.email = "Enter a valid email.";
-    }
-    if (!v.topic) {
-      next.topic = "Select a topic.";
-    }
-    if (!v.message || v.message.trim().length < 20) {
-      next.message = "Message must be at least 20 characters.";
-    }
-    if (!v.consent) {
-      next.consent = "Consent is required.";
-    }
-    return next;
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => {
-    const { name, value, type, checked } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setServerError(null);
-    setSuccess(false);
-    const validation = validate(values);
-    setErrors(validation);
-    if (Object.keys(validation).length) return;
-
-    setSubmitting(true);
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, sourcePage: "/contact" }),
+      window.hbspt.forms.create({
+        portalId: HUBSPOT_PORTAL_ID,
+        formId: HUBSPOT_FORM_ID,
+        region: HUBSPOT_REGION,
+        target: `#${targetId}`,
       });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data?.error || "Something went wrong. Please try again.");
-      }
-      setSuccess(true);
-      setValues({
-        fullName: "",
-        email: "",
-        topic: "",
-        message: "",
-        consent: false,
-      });
-      setErrors({});
-    } catch (err: any) {
-      setServerError(err?.message || "Failed to submit. Please try again.");
-    } finally {
-      setSubmitting(false);
+    };
+
+    if (window.hbspt?.forms) {
+      createForm();
+      return;
     }
-  };
+
+    const existingScript = document.querySelector<HTMLScriptElement>(
+      `script[src="${HUBSPOT_SCRIPT_SRC}"]`,
+    );
+
+    if (existingScript) {
+      existingScript.addEventListener("load", createForm);
+      return () => existingScript.removeEventListener("load", createForm);
+    }
+
+    const script = document.createElement("script");
+    script.src = HUBSPOT_SCRIPT_SRC;
+    script.async = true;
+    script.onload = createForm;
+    document.body.appendChild(script);
+
+    return () => {
+      script.onload = null;
+    };
+  }, [targetId]);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
-      {success && <div className={styles.success}>Thanks. We received your message and will reply soon.</div>}
-      {serverError && <div className={styles.errorBanner}>{serverError}</div>}
-
-      <div className={styles.field}>
-        <label htmlFor="fullName">Full name *</label>
-        <input
-          id="fullName"
-          name="fullName"
-          ref={refs.fullName}
-          value={values.fullName}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.fullName)}
-          aria-describedby={errors.fullName ? "fullName-error" : undefined}
-          required
-        />
-        {errors.fullName && (
-          <p id="fullName-error" className={styles.error}>
-            {errors.fullName}
-          </p>
-        )}
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="email">Email *</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          ref={refs.email}
-          value={values.email}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.email)}
-          aria-describedby={errors.email ? "email-error" : undefined}
-          required
-        />
-        {errors.email && (
-          <p id="email-error" className={styles.error}>
-            {errors.email}
-          </p>
-        )}
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="topic">Topic *</label>
-        <select
-          id="topic"
-          name="topic"
-          ref={refs.topic}
-          value={values.topic}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.topic)}
-          aria-describedby={errors.topic ? "topic-error" : undefined}
-          required
-        >
-          <option value="">Select a topic</option>
-          {topics.map((t) => (
-            <option key={t} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
-        {errors.topic && (
-          <p id="topic-error" className={styles.error}>
-            {errors.topic}
-          </p>
-        )}
-      </div>
-
-      <div className={styles.field}>
-        <label htmlFor="message">Message *</label>
-        <textarea
-          id="message"
-          name="message"
-          ref={refs.message}
-          value={values.message}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.message)}
-          aria-describedby={errors.message ? "message-error" : undefined}
-          rows={5}
-          required
-        />
-        {errors.message && (
-          <p id="message-error" className={styles.error}>
-            {errors.message}
-          </p>
-        )}
-      </div>
-
-      <div className={styles.checkboxRow}>
-        <input
-          id="consent"
-          name="consent"
-          type="checkbox"
-          ref={refs.consent}
-          checked={values.consent}
-          onChange={handleChange}
-          aria-invalid={Boolean(errors.consent)}
-          aria-describedby={errors.consent ? "consent-error" : undefined}
-          required
-        />
-        <label htmlFor="consent">I agree to be contacted about my inquiry.</label>
-      </div>
-      {errors.consent && (
-        <p id="consent-error" className={styles.error}>
-          {errors.consent}
-        </p>
-      )}
-
+    <div className={styles.formWrap}>
+      <div id={targetId} ref={formRef} className={styles.form} />
       {disclaimer && <p className={styles.disclaimer}>{disclaimer}</p>}
-
-      <button type="submit" className={styles.submit} disabled={submitting}>
-        {submitting ? "Sending..." : "Send message"}
-      </button>
-    </form>
+    </div>
   );
 }

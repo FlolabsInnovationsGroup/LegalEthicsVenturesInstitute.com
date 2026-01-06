@@ -13,7 +13,10 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "info"
+    "form";
   gap: 20px;
 }
 
@@ -60,8 +63,32 @@
   color: var(--text);
 }
 
+.list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+  list-style: disc;
+}
+
+.listItem {
+  margin: 0;
+}
+
+.formPanel {
+  grid-area: form;
+}
+
+.infoPanel {
+  grid-area: info;
+}
+
 @media (max-width: 768px) {
   .panel {
     padding: 18px;
   }
 }
+

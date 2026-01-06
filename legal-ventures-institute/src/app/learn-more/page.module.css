@@ -1,0 +1,180 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 80px 0 96px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+.heroContent {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.primary,
+.secondary {
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, background 0.15s ease;
+}
+
+.primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent3));
+  color: #000;
+  border: 1px solid transparent;
+  box-shadow: 0 10px 24px rgba(242, 148, 65, 0.35);
+}
+
+.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(242, 148, 65, 0.45);
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: transparent;
+}
+
+.secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.listItem {
+  margin: 0;
+}
+
+.steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.stepItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+}
+
+.stepBadge {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: linear-gradient(120deg, var(--accent), var(--accent3));
+  color: #000;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepText {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cta {
+  width: 100%;
+}
+
+.ctaInner {
+  background: linear-gradient(135deg, rgba(242, 148, 65, 0.08), rgba(16, 16, 24, 0.9));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 64px 0 80px;
+    gap: 40px;
+  }
+
+  .heroContent,
+  .card,
+  .stepItem,
+  .ctaInner {
+    padding: 18px;
+  }
+}

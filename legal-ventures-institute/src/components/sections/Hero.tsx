@@ -43,10 +43,15 @@ export default function Hero() {
               ))}
             </div>
             <div className={styles.actions}>
-              <a className={styles.primary} href="#apply">
+              <a
+                className={styles.primary}
+                href="https://hephaestus.international/internships/ethical-legal-research-intern"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Apply
               </a>
-              <a className={styles.secondary} href="#learn-more">
+              <a className={styles.secondary} href="/learn-more">
                 Learn more
               </a>
             </div>

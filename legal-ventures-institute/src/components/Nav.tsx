@@ -45,9 +45,14 @@ export default function Nav() {
               <span className={styles.dot} aria-hidden />
               Talk to us
             </Link>
-            <Link href="#apply" className={styles.apply}>
+            <a
+              href="https://hephaestus.international/"
+              className={styles.apply}
+              target="_blank"
+              rel="noreferrer"
+            >
               Apply
-            </Link>
+            </a>
           </div>
         </div>
       </div>
