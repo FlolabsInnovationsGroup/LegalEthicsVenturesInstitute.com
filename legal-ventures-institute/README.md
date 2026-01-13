@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Legal Ventures Institute
+
+Marketing site built with Next.js App Router and TypeScript, matching slide-based design specs with dark navy panels, bold typography, and orange/red accents.
+
+## Mission
+Advance responsible innovation at the intersection of law, ethics, and venture creation.
+
+## Tech Stack
+- Next.js App Router
+- TypeScript
+- CSS Modules (section-level styling)
+- `next/image` for images
+- No UI libraries
 
 ## Getting Started
-
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
+- `npm run dev` - local dev server
+- `npm run build` - production build
+- `npm run start` - run production server
+- `npm run lint` - lint
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
+- `src/app` - App Router routes and pages
+- `src/components/sections` - one section per file + matching CSS module
+- `src/components/ContactForm.tsx` - HubSpot form embed
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content & Design Guidelines
+- Content should be data-driven where possible (arrays, mapped lists).
+- Layout is 2-column on desktop, stacked on mobile.
+- Visuals: dark navy background, panel sections, subtle borders, rounded corners, accents `#f1a23a` and `#d64242`.
 
-## Learn More
+## Updating Sections
+1. Add a component in `src/components/sections`.
+2. Add a matching CSS module.
+3. Import and place it in the relevant route (ex: `src/app/page.tsx`).
 
-To learn more about Next.js, take a look at the following resources:
+## Assets
+Place images in `public/` and load them with `next/image`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact Form (HubSpot)
+Update IDs in `src/components/ContactForm.tsx`:
+- `HUBSPOT_PORTAL_ID`
+- `HUBSPOT_FORM_ID`
+- `HUBSPOT_REGION`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
+Live site: https://www.legalethicsventuresinstitute.com
 
-## Deploy on Vercel
+```bash
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+1. Create a branch off `main`.
+2. Run `npm run lint` and `npm run build`.
+3. Open a PR with a short summary and screenshots for UI changes.
