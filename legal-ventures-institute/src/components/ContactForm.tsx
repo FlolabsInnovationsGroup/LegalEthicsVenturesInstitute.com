@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
+import styles from "./ContactForm.module.css";
 
 type Props = {
   disclaimer?: string;
@@ -28,6 +29,10 @@ const HUBSPOT_SCRIPT_SRC = "https://js.hsforms.net/forms/embed/v2.js";
 const HUBSPOT_PORTAL_ID = "45023159";
 const HUBSPOT_FORM_ID = "a41399f8-7406-4f05-91ca-1c79839a2987";
 const HUBSPOT_REGION = "na1";
+
+export default function ContactForm({ disclaimer }: Props) {
+  const targetId = `hubspot-form-${useId().replace(/:/g, "")}`;
+  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const createForm = () => {
