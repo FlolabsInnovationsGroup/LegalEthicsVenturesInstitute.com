@@ -64,18 +64,18 @@ export default function ContactForm({ disclaimer }: Props) {
     const script = document.createElement("script");
     script.src = HUBSPOT_SCRIPT_SRC;
     script.async = true;
-    script.onload = createForm;
+    script.addEventListener("load", createForm);
     document.body.appendChild(script);
 
     return () => {
-      script.onload = null;
+      script.removeEventListener("load", createForm);
     };
   }, [targetId]);
 
   return (
-    <div className={styles.formWrap}>
-      <div id={targetId} ref={formRef} className={styles.form} />
-      {disclaimer && <p className={styles.disclaimer}>{disclaimer}</p>}
+    <div className={styles.wrapper}>
+      <div id={targetId} ref={formRef} />
+      {disclaimer ? <p className={styles.disclaimer}>{disclaimer}</p> : null}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./Hero.module.css";
 
 const heroLines = [
@@ -13,20 +12,21 @@ const heroLines = [
 export default function Hero() {
   return (
     <section className={styles.section}>
+      <div className={styles.background}>
+        <video
+          className={styles.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/Assets/1st image.jpg"
+        >
+          <source src="/Assets/1stvideo.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.imageOverlay} />
+      </div>
       <div className="container">
-        <div className={styles.inner}>
-          <div className={styles.media}>
-            <div className={styles.imageWrap}>
-              <Image
-                src="/Assets/hero-1st.jpg"
-                alt="Legal & Ethics Ventures Institute hero"
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 52vw"
-              />
-              <div className={styles.imageOverlay} />
-            </div>
-          </div>
+        <div className={styles.content}>
           <div className={styles.panel}>
             <div className={styles.header}>
               <h1 className={styles.title}>

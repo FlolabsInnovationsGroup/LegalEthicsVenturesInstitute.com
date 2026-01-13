@@ -1,20 +1,25 @@
-import Image from "next/image";
 import styles from "./Maze.module.css";
 
 export default function Maze() {
   return (
     <section className={styles.section}>
+      <div className={styles.background}>
+        <video
+          className={styles.video}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/Assets/3rd image.jpg"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src="/Assets/3rdvideo.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.backgroundOverlay} />
+      </div>
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.imageWrap}>
-            <Image
-              src="/Assets/3rd image.jpg"
-              alt="Maze representing legal world"
-              fill
-              sizes="(max-width: 900px) 100vw, 48vw"
-            />
-            <div className={styles.imageOverlay} />
-          </div>
           <div className={styles.panel}>
             <p className={styles.kicker}>Where the legal world is a maze...</p>
             <h3 className={styles.headline}>

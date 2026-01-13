@@ -13,6 +13,28 @@
 
   --radius: 18px;
   --shadow: 0 12px 40px rgba(0,0,0,.35);
+
+  --nav-bg: rgba(0, 0, 0, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.12);
+  --panel-glass: rgba(15, 22, 42, 0.75);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"]{
+  --bg: #F3F4F8;
+  --panel: #FFFFFF;
+  --text: #0F1018;
+  --muted: rgba(15,16,24,.74);
+  --muted2: rgba(15,16,24,.6);
+  --line: rgba(15,16,24,.12);
+  --shadow: 0 12px 32px rgba(15,16,24,.18);
+
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-border: rgba(15, 16, 24, 0.12);
+  --panel-glass: rgba(255, 255, 255, 0.88);
+
+  color-scheme: light;
 }
 
 *{ box-sizing: border-box; }

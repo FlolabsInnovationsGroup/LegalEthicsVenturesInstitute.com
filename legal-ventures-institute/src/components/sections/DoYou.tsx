@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./DoYou.module.css";
 
 const checklist = [
@@ -36,12 +35,18 @@ export default function DoYou() {
             </div>
           </div>
           <div className={styles.imageWrap}>
-            <Image
-              src="/Assets/5th image.jpg"
-              alt="Community and mentorship"
-              fill
-              sizes="(max-width: 900px) 100vw, 48vw"
-            />
+            <video
+              className={styles.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/Assets/5th image.jpg"
+              aria-hidden="true"
+              tabIndex={-1}
+            >
+              <source src="/Assets/5thvideo.mp4" type="video/mp4" />
+            </video>
             <div className={styles.imageOverlay} />
           </div>
         </div>

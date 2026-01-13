@@ -1,0 +1,103 @@
+.section {
+  padding: 80px 0;
+}
+
+.inner {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
+}
+
+.panel {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.2;
+}
+
+.subtitle {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px 0;
+}
+
+.pillar {
+  border-top: 2px solid var(--danger);
+  padding-top: 14px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+}
+
+.number {
+  font-size: 16px;
+  color: var(--muted2);
+  letter-spacing: 0.08em;
+}
+
+.pillarBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pillarTitle {
+  margin: 0;
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.pillarDetail {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .panel {
+    padding: 28px;
+  }
+
+  .pillars {
+    padding: 28px 0;
+  }
+}

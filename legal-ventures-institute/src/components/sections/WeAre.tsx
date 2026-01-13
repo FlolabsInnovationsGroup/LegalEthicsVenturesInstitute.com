@@ -6,8 +6,17 @@ const audience = ["students", "career changers", "international learners", "inno
 export default function WeAre() {
   return (
     <section className={styles.section}>
+      <div className={styles.background}>
+        <Image
+          src="/Assets/2nd image.jpg"
+          alt="Collaborative learning"
+          fill
+          sizes="100vw"
+        />
+        <div className={styles.imageOverlay} />
+      </div>
       <div className="container">
-        <div className={styles.inner}>
+        <div className={styles.content}>
           <div className={styles.panel}>
             <div className={styles.lines}>
               <p className={styles.kicker}>We are ...</p>
@@ -40,15 +49,6 @@ export default function WeAre() {
               ))}
               - all welcome here.
             </p>
-          </div>
-          <div className={styles.imageWrap}>
-            <Image
-              src="/Assets/2nd image.jpg"
-              alt="Collaborative learning"
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
-            />
-            <div className={styles.imageOverlay} />
           </div>
         </div>
       </div>
