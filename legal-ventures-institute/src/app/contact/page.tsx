@@ -1,4 +1,3 @@
-import ContactForm from "@/components/ContactForm";
 import Nav from "@/components/Nav";
 import styles from "./page.module.css";
 
@@ -68,18 +67,6 @@ export default async function ContactPage() {
           <p className="p">{content.intro}</p>
         </div>
       </header>
-
-      <div className={styles.grid}>
-        <section
-          className={`${styles.panel} ${styles.formPanel}`}
-          aria-labelledby="contact-form"
-        >
-          <h2 id="contact-form" className="h2">
-            {content.formHeading}
-          </h2>
-          <p className="p">{content.formCopy}</p>
-          <ContactForm disclaimer={data?.formDisclaimer} />
-        </section>
 
         <section
           className={`${styles.panel} ${styles.infoPanel}`}
