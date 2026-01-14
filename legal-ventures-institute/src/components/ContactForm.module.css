@@ -1,0 +1,107 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.wrapper :global(.hs-form) {
+  display: grid;
+  gap: 14px;
+}
+
+.wrapper :global(.hs-form-field) {
+  margin: 0;
+}
+
+.wrapper :global(.hs-form label) {
+  display: block;
+  font-size: 12px;
+  color: var(--muted2);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.wrapper :global(.hs-form .input) {
+  margin-top: 6px;
+}
+
+.wrapper :global(.hs-form input),
+.wrapper :global(.hs-form textarea),
+.wrapper :global(.hs-form select) {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.4;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wrapper :global(.hs-form textarea) {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.wrapper :global(.hs-form input:focus),
+.wrapper :global(.hs-form textarea:focus),
+.wrapper :global(.hs-form select:focus) {
+  outline: none;
+  border-color: rgba(241, 162, 58, 0.7);
+  box-shadow: 0 0 0 2px rgba(241, 162, 58, 0.2);
+}
+
+.wrapper :global(.hs-form .inputs-list) {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.wrapper :global(.hs-form .inputs-list label) {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.wrapper :global(.hs-form .hs-error-msgs) {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--danger);
+  font-size: 12px;
+}
+
+.wrapper :global(.hs-form .hs-submit) {
+  margin-top: 8px;
+}
+
+.wrapper :global(.hs-form .hs-button),
+.wrapper :global(.hs-form input[type="submit"]) {
+  background: var(--accent);
+  color: #0b0e14;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  justify-self: start;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper :global(.hs-form .hs-button:hover),
+  .wrapper :global(.hs-form input[type="submit"]:hover) {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.disclaimer {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted2);
+  line-height: 1.5;
+}

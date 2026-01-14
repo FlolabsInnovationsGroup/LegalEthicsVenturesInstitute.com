@@ -15,8 +15,8 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas:
-    "info"
-    "form";
+    "form"
+    "info";
   gap: 20px;
 }
 
@@ -89,6 +89,14 @@
 @media (max-width: 768px) {
   .panel {
     padding: 18px;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    grid-template-areas: "form info";
+    align-items: start;
   }
 }
 

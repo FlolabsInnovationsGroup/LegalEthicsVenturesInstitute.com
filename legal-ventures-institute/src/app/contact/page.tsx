@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import ContactForm from "@/components/ContactForm";
 import styles from "./page.module.css";
 
 type ContactPageData = {
@@ -68,6 +69,18 @@ export default async function ContactPage() {
         </div>
       </header>
 
+      <section className={styles.grid}>
+        <section
+          className={`${styles.panel} ${styles.formPanel}`}
+          aria-labelledby="contact-form"
+        >
+          <h2 id="contact-form" className="h2">
+            {content.formHeading}
+          </h2>
+          <p className="p">{content.formCopy}</p>
+          <ContactForm disclaimer={data?.formDisclaimer} />
+        </section>
+
         <section
           className={`${styles.panel} ${styles.infoPanel}`}
           aria-labelledby="contact-reasons"
@@ -96,6 +109,7 @@ export default async function ContactPage() {
 
           <p className="p">{content.closing}</p>
         </section>
+      </section>
     </main>
   );
 }
