@@ -96,7 +96,6 @@ export default async function ContactPage() {
 
           <p className="p">{content.closing}</p>
         </section>
-      </div>
     </main>
   );
 }
