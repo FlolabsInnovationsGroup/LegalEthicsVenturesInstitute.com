@@ -1,12 +1,12 @@
 import styles from "./Hero.module.css";
 
 const heroLines = [
+  <h2 className="text-2xl">Advance your career. Be at the center of the future.<h2/>,
   <>Elevating the <span className="em-danger">game.</span></>,
   <>From textbooks to <span className="em-accent">real-world impact.</span></>,
   <>
     No frontiers. <span className="em-danger">No limits.</span>
   </>,
-  <>Advance your career. Be at the center of the future.</>,
 ];
 
 export default function Hero() {
