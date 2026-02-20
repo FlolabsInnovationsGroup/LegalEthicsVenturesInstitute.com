@@ -1,12 +1,10 @@
 import styles from "./Hero.module.css";
 
 const heroLines = [
-  <p className="text-lg">Advance your career. Be at the center of the future.<p/>,
+  "Advance your career. Be at the center of the future.",
   <>Elevating the <span className="em-danger">game.</span></>,
   <>From textbooks to <span className="em-accent">real-world impact.</span></>,
-  <>
-    No frontiers. <span className="em-danger">No limits.</span>
-  </>,
+  <>No frontiers. <span className="em-danger">No limits.</span></>,
 ];
 
 export default function Hero() {
@@ -25,6 +23,7 @@ export default function Hero() {
         </video>
         <div className={styles.imageOverlay} />
       </div>
+
       <div className="container">
         <div className={styles.content}>
           <div className={styles.panel}>
@@ -35,13 +34,15 @@ export default function Hero() {
                 Ventures Institute
               </h1>
             </div>
+
             <div className={styles.lines}>
               {heroLines.map((line, idx) => (
-                <p key={idx} className={styles.line}>
+                <div key={idx} className={styles.line}>
                   {line}
-                </p>
+                </div>
               ))}
             </div>
+
             <div className={styles.actions}>
               <a
                 className={styles.primary}
