@@ -1,6 +1,6 @@
 # Legal Ventures Institute
 
-Marketing site built with Next.js App Router and TypeScript , matching slide-based design specs with dark navy panels, bold typography, and orange/red accents.
+Marketing site built with Next.js App Router and TypeScript, matching slide-based design specs with dark navy panels, bold typography, and orange/red accents.
 
 ## Mission
 Advance responsible innovation at the intersection of law, ethics, and venture creation.
